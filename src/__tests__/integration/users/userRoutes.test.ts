@@ -293,7 +293,7 @@ describe("/users", () => {
       .send(newValues);
 
     expect(response.body).toHaveProperty("message");
-    expect(response.status).toBe(403);
+    expect(response.status).toBe(401);
   });
 
   test("PATCH /users/:id -  should be able to update user", async () => {

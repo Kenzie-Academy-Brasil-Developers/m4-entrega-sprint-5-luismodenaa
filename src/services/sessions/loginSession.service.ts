@@ -17,6 +17,10 @@ const loginSessionService = async (data: ISessionRequest) => {
     throw new AppError("Usuário ou senha incorretos", 403);
   }
 
+  if (!user.isActive) {
+    throw new AppError("Usuário ou senha incorretos", 400);
+  }
+
   const passwordMatch = await compare(data.password, user.password);
 
   if (!passwordMatch) {
